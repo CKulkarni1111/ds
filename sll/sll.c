@@ -41,6 +41,30 @@ void sll_append(struct node **sl, int data)
 	}
 }
 
+/* insert node before the position */
+void sll_insert_before(struct node **sl, int pos, int data)
+{
+
+}
+
+/* insert node after the position */
+void sll_insert_after(struct node **sl, int pos, int data)
+{
+
+}
+
+/* delete node before the position */
+void sll_delete_before(struct node **sl, int pos)
+{
+
+}
+
+/* delete node after the position */
+void sll_delete_after(struct node **sl, int pos)
+{
+
+}
+
 /* delete entire linked list iteratively */
 void sll_delete(struct node **sl)
 {
