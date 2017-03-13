@@ -9,6 +9,7 @@
 
 #include "sll.h"
 
+/* allocate and initialize node */
 static struct node * get_node(int data)
 {
 	struct node *n;
@@ -23,6 +24,7 @@ static struct node * get_node(int data)
 	return n;
 }
 
+/* create and append the node at the end of the list */
 void sll_append(struct node **sl, int data)
 {
 	struct node *n;
@@ -39,6 +41,7 @@ void sll_append(struct node **sl, int data)
 	}
 }
 
+/* delete entire linked list iteratively */
 void sll_delete(struct node **sl)
 {
 	struct node *t;
@@ -50,11 +53,15 @@ void sll_delete(struct node **sl)
 	}
 }
 
+/* append list b at the end of list a */
 void sll_append_list(struct node **a, struct node **b)
 {
 	struct node *t;
 
-	if ((*a == NULL && *b == NULL) || (*a != NULL && *b == NULL))
+	if (*a == NULL && *b == NULL)
+		return;
+
+	if (*a != NULL && *b == NULL)
 		return;
 
 	if (*a == NULL) {
