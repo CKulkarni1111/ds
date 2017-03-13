@@ -42,20 +42,12 @@ void sll_append(struct node **sl, int data)
 void sll_delete(struct node **sl)
 {
 	struct node *t;
-	struct node *temp;
 
-	if (*sl == NULL)
-		return;
-
-	t = *sl;
-
-	for (temp = t->next; temp != NULL; temp = temp->next) {
+	while (*sl) {
+		t = *sl;
+		*sl = (*sl)->next;
 		free(t);
-		t = temp;
 	}
-
-	free(t);
-	*sl = NULL;
 }
 
 void sll_append_list(struct node **a, struct node **b)
