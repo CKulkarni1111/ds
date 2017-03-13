@@ -8,8 +8,8 @@ all: $(PROG)
 $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-server.o: rio.h
-rio.o: rio.h
+main.o: sll.h
+sll.o: sll.h
 
 clean:
 	rm -f *~ *.o $(PROG) core a.out
