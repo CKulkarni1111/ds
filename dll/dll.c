@@ -89,7 +89,6 @@ void dll_delete_rec(struct node *sl)
 	free(sl);
 }
 
-
 void dll_print(struct node *sl)
 {
 	while (sl) {
