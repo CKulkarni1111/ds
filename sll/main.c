@@ -5,21 +5,12 @@
 int main(int argc, char *argv[])
 {
 	int i;
-	struct node *sla = NULL;
-	struct node *slb = NULL;
+	struct node *sl = NULL;
 
 	for (i = 0; i < 10; i++)
-		sll_append(&sla, i * 10);
+		sll_append(&sl, i * 10);
 
-	for (i = 0; i < 10; i++)
-		sll_append(&slb, i * 100);
-
-	sll_print(sla);
-	sll_print(slb);
-	sll_append_list(&sla, &slb);
-
-	sll_print(sla);
-	sll_print(slb);
-	sll_delete(&sla);
+	sll_print(sl);
+	sll_delete_rec(sl);
 	return 0;
 }

@@ -77,6 +77,16 @@ void sll_delete(struct node **sl)
 	}
 }
 
+/* delete entire linked list recursively */
+void sll_delete_rec(struct node *sl)
+{
+	if (sl == NULL)
+		return;
+
+	sll_delete_rec(sl->next);
+	free(sl);
+}
+
 /* append list b at the end of list a */
 void sll_append_list(struct node **a, struct node **b)
 {
