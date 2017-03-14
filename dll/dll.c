@@ -67,6 +67,26 @@ void dll_delete_after(struct node **sl, int pos)
 
 }
 
+/* append list a at the end of list b */
+void dll_append_list(struct node **a, struct node **b)
+{
+	struct node *t;
+
+	if (*a == NULL && *b == NULL)
+		return;
+
+	if (*a != NULL && *b == NULL)
+		return;
+
+	if (*a != NULL && *b != NULL) {
+		for (t = *a; t->next != NULL; t = t->next)
+			;
+		t->next = *b;
+		(*b)->prev = t;
+	}
+	*b = NULL;
+}
+
 /* delete entire linked list iteratively */
 void dll_delete(struct node **sl)
 {
