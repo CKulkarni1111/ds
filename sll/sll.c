@@ -76,7 +76,27 @@ void sll_insert_nth(struct node **sl, int pos, int data)
 /* delete the nth node */
 void sll_delete_nth(struct node **sl, int pos)
 {
+	int i;
+	struct node *d;
+	struct node *t;
 
+	if (*sl == NULL)
+		return;
+
+	if (pos == 1) {
+		d = *sl;
+		*sl = (*sl)->next;
+		free(d);
+	} else if (pos > 1) {
+		for (i = 1, t = *sl; t->next && i < pos; i++, t = t->next) {
+			if ((pos - 1) == i) {
+				d = t->next;
+				t->next = d->next;
+				free(d);
+				return;
+			}
+		}
+	}
 }
 
 
