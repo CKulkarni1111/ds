@@ -46,8 +46,35 @@ void dll_append(struct node **sl, int data)
 /* insert node before the position */
 void dll_insert_nth(struct node **sl, int pos, int data)
 {
+	int i;
+	struct node *t;
+	struct node *nn;
 
+	if (*sl == NULL && pos != 1)
+		return;
+
+	if (*sl == NULL && pos == 1) {
+		*sl = get_node(data);
+	} else if (*sl != NULL && pos == 1) {
+		nn = get_node(data);
+		nn->next = *sl;
+		(*sl)->prev = nn;
+		*sl = nn;
+	} else if (*sl != NULL && pos > 1) {
+		for (i = 1, t = *sl; t && i < pos; i++, t = t->next) {
+			if ((pos - 1) == i) {
+				nn = get_node(data);
+				nn->next = t->next;
+				nn->prev = t;
+				if (t->next) {
+					t->next->prev = nn;
+				}
+				t->next = nn;
+			}
+		}
+	}
 }
+
 /* delete node before the position */
 void dll_delete_nth(struct node **sl, int pos)
 {

@@ -6,10 +6,12 @@ int main(int argc, char *argv[])
 {
 	int i;
 	struct node *sla = NULL;
-	struct node *slb = NULL;
+    struct node *slb = NULL;
 
-	for (i = 0; i < 10; i++)
-		dll_append(&sla, i * 10);
+	for (i = 1; i <= 10; i++) {
+		dll_insert_nth(&sla, i, i * 10);
+		dll_print(sla);
+	}
 
 	for (i = 0; i < 5; i++)
 		dll_append(&slb, i * 100);
