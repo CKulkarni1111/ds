@@ -146,6 +146,19 @@ void dll_delete_rec(struct node *sl)
 	free(sl);
 }
 
+/* get total number of nodes */
+int dll_count(struct node *sl)
+{
+	int i;
+
+	while (sl) {
+		i++;
+		sl = sl->next;
+	}
+
+	return i;
+}
+
 void dll_print(struct node *sl)
 {
 	while (sl) {

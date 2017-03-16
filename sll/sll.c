@@ -144,6 +144,19 @@ void sll_append_list(struct node **a, struct node **b)
 	*b = NULL;
 }
 
+/* get total number of nodes */
+int sll_count(struct node *sl)
+{
+	int i;
+
+	while (sl) {
+		i++;
+		sl = sl->next;
+	}
+
+	return i;
+}
+
 void sll_print(struct node *sl)
 {
 	while (sl) {

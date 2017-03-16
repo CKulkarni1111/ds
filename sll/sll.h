@@ -16,5 +16,6 @@ void sll_delete_rec(struct node *sl);
 void sll_append_list(struct node **a, struct node **b);
 void sll_insert_nth(struct node **sl, int pos, int data);
 void sll_delete_nth(struct node **sl, int pos);
+int  sll_count(struct node *sl);
 void sll_print(struct node *sl);
 #endif /* __SLL__ */
