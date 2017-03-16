@@ -44,27 +44,37 @@ void dll_append(struct node **sl, int data)
 }
 
 /* insert node before the position */
-void dll_insert_before(struct node **sl, int pos, int data)
+void dll_insert_nth(struct node **sl, int pos, int data)
 {
 
 }
-
-/* insert node after the position */
-void dll_insert_after(struct node **sl, int pos, int data)
-{
-
-}
-
 /* delete node before the position */
-void dll_delete_before(struct node **sl, int pos)
+void dll_delete_nth(struct node **sl, int pos)
 {
+    int i;
+	struct node *d;
+	struct node *t;
 
-}
+	if (*sl == NULL && pos != 1)
+		return;
 
-/* delete node after the position */
-void dll_delete_after(struct node **sl, int pos)
-{
-
+	if (*sl != NULL && pos == 1) {
+		d = *sl;
+		*sl = d->next;
+		if (*sl)
+			(*sl)->prev = NULL;
+		free(d);
+	} else if (*sl != NULL && pos > 1) {
+		for (i = 1, t = *sl; t->next && i < pos; i++, t = t->next) {
+			if (pos - 1 == i) {
+				d = t->next;
+				t->next = d->next;
+				if (d->next)
+					d->next->prev = t;
+				free(d);
+			}
+		}
+	}
 }
 
 /* append list a at the end of list b */
