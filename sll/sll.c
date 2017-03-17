@@ -73,6 +73,32 @@ void sll_insert_nth(struct node **sl, int pos, int data)
 	}
 }
 
+void sll_sorted_insert(struct node **sl, int data)
+{
+	struct node *l;
+	struct node *h;
+	struct node *nn;
+
+	nn = get_node(data);
+	if (*sl == NULL) {
+		*sl = nn;
+	} else if (*sl != NULL && (*sl)->data >= data) {
+		nn->next = *sl;
+		*sl = nn;
+	} else {
+		for (l = *sl, h = (*sl)->next; h; l = h, h = h->next) {
+			if (l->data <= data && h->data >= data) {
+				nn->next = h;
+				l->next = nn;
+				return;
+			}
+		}
+		if (!h && l && !l->next) {
+			l->next = nn;
+		}
+	}
+}
+
 /* delete the nth node */
 void sll_delete_nth(struct node **sl, int pos)
 {
@@ -98,7 +124,6 @@ void sll_delete_nth(struct node **sl, int pos)
 		}
 	}
 }
-
 
 /* delete entire linked list iteratively */
 void sll_delete(struct node **sl)

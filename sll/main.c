@@ -7,6 +7,19 @@ int main(int argc, char *argv[])
 	int i;
 	struct node *sl = NULL;
 
+	for (i = 0; i < 10; i++) {
+		sll_sorted_insert(&sl,  i * 10);
+		sll_print(sl);
+	}
+
+	printf("---\n");
+
+	for (i = 0; i < 10; i++) {
+		sll_sorted_insert(&sl,  i * 5);
+		sll_print(sl);
+	}
+
+#if 0
 	for (i = 0; i < 10; i++)
 		sll_append(&sl, i * 10);
 
@@ -17,7 +30,6 @@ int main(int argc, char *argv[])
 	sll_print(sl);
 	sll_delete_nth(&sl, 5);
 	sll_print(sl);
-#if 0
 	sll_insert_nth(&sl, 1, 1111);
 	sll_print(sl);
 
