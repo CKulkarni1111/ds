@@ -174,6 +174,7 @@ int sll_count(struct node *sl)
 {
 	int i;
 
+	i = 0;
 	while (sl) {
 		i++;
 		sl = sl->next;
