@@ -125,6 +125,36 @@ void sll_delete_nth(struct node **sl, int pos)
 	}
 }
 
+/* delete all the nodes which matches data */
+void sll_delete_data(struct node **sl, int data)
+{
+	struct node *l;
+	struct node *h;
+	struct node *t;
+
+	if (*sl == NULL)
+		return;
+	else {
+		while (*sl && (*sl)->data == data) {
+			t = *sl;
+			*sl = (*sl)->next;
+			free(t);
+		}
+		if (*sl) {
+			for (l = *sl, h = l->next; h; l = h, h = h->next) {
+				while (h && h->data == data) {
+					t = h;
+					h = h->next;
+					free(t);
+				}
+				l->next = h;
+				if (!h)
+					return;
+			}
+		}
+	}
+}
+
 /* delete entire linked list iteratively */
 void sll_delete(struct node **sl)
 {

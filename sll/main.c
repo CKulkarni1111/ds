@@ -2,8 +2,47 @@
 
 #include "sll.h"
 
+void test_sll_delete_data(void);
+
+void test_sll_delete_data(void)
+{
+	//int i;
+	struct node *sl = NULL;
+
+	sll_append(&sl, 0);
+	sll_print(sl);
+	sll_delete_data(&sl, 1);
+	sll_print(sl);
+
+	sll_delete_data(&sl, 0);
+	sll_print(sl);
+
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_print(sl);
+	sll_delete_data(&sl, 0);
+	sll_print(sl);
+
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_append(&sl, 1);
+	sll_append(&sl, 0);
+	sll_append(&sl, 0);
+	sll_print(sl);
+	sll_delete_data(&sl, 0);
+	sll_print(sl);
+	sll_delete_rec(sl);
+}
+
 int main(int argc, char *argv[])
 {
+
+
+	test_sll_delete_data();
+#if 0
 	int i;
 	struct node *sl = NULL;
 
@@ -19,7 +58,6 @@ int main(int argc, char *argv[])
 		sll_print(sl);
 	}
 
-#if 0
 	for (i = 0; i < 10; i++)
 		sll_append(&sl, i * 10);
 
