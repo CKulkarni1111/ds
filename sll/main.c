@@ -2,11 +2,24 @@
 
 #include "sll.h"
 
+struct node* make_sll(unsigned int n);
 void test_sll_delete_data(void);
+void test_sll_split(void);
+
+struct node* make_sll(unsigned int n)
+{
+    int i;
+
+	struct node *sl = NULL;
+
+    for (i = 0; i < n; i++)
+		sll_append(&sl, i);
+
+	return sl;
+}
 
 void test_sll_delete_data(void)
 {
-	//int i;
 	struct node *sl = NULL;
 
 	sll_append(&sl, 0);
@@ -37,11 +50,77 @@ void test_sll_delete_data(void)
 	sll_delete_rec(sl);
 }
 
+
+void test_sll_split(void)
+{
+	struct node *sl = NULL;
+	struct node *a = NULL;
+	struct node *b = NULL;
+
+	printf("Split empty list:- \n");
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+
+	printf("add one node and split:-\n");
+    sl = make_sll(1);
+	sll_print(sl);
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+	printf("add two nodes and split:-\n");
+	sl = make_sll(2);
+	sll_print(sl);
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+	printf("add three nodes and split:-\n");
+	sl = make_sll(3);
+	sll_print(sl);
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+	printf("add four nodes and split:-\n");
+	sl = make_sll(4);
+	sll_print(sl);
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+
+	printf("add four nodes and split:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+	
+}
+
 int main(int argc, char *argv[])
 {
 
 
-	test_sll_delete_data();
+	/*test_sll_delete_data();*/
+	test_sll_split();
 #if 0
 	int i;
 	struct node *sl = NULL;

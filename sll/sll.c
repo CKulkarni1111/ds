@@ -155,6 +155,33 @@ void sll_delete_data(struct node **sl, int data)
 	}
 }
 
+void sll_split(struct node **sl, struct node **a, struct node **b)
+{
+	struct node *l;
+	struct node *h;
+
+	if (*sl == NULL) {
+		*a = NULL;
+		*b = NULL;
+		return;
+	}
+
+	if ((*sl)->next == NULL) {
+		*a = *sl;
+		*b = NULL;
+		*sl = NULL;
+		return;
+	}
+
+	for (l = *sl, h = l->next; h->next && h->next->next;
+									l = h, h = h->next->next)
+		;
+	*a = *sl; 
+	*b = l->next;
+	l->next = NULL;
+	*sl = NULL;
+}
+
 /* delete entire linked list iteratively */
 void sll_delete(struct node **sl)
 {
