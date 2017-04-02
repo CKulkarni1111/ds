@@ -182,6 +182,27 @@ void sll_split(struct node **sl, struct node **a, struct node **b)
 	*sl = NULL;
 }
 
+struct node* __sll_reverse_rec(struct node *sl, struct node *p)
+{
+	struct node *nsl = NULL;
+
+	if (sl->next != NULL)
+	   	nsl = __sll_reverse_rec(sl->next, sl);
+
+	if (sl->next == NULL)
+		nsl = sl;
+
+	sl->next = p;
+	
+	return nsl;
+}
+
+void sll_reverse_rec(struct node **sl)
+{
+	*sl = __sll_reverse_rec(*sl, NULL);
+}
+
+
 /* delete entire linked list iteratively */
 void sll_delete(struct node **sl)
 {

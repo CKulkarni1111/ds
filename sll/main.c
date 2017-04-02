@@ -5,6 +5,7 @@
 struct node* make_sll(unsigned int n);
 void test_sll_delete_data(void);
 void test_sll_split(void);
+void test_sll_reverse_rec(void);
 
 struct node* make_sll(unsigned int n)
 {
@@ -115,12 +116,25 @@ void test_sll_split(void)
 	
 }
 
+void test_sll_reverse_rec(void)
+{
+	struct node *sl = NULL;
+
+	printf("add four nodes and split:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_reverse_rec(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+}
+
 int main(int argc, char *argv[])
 {
 
 
 	/*test_sll_delete_data();*/
-	test_sll_split();
+	/*test_sll_split();*/
+	test_sll_reverse_rec();
 #if 0
 	int i;
 	struct node *sl = NULL;
