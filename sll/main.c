@@ -5,6 +5,7 @@
 struct node* make_sll(unsigned int n);
 void test_sll_delete_data(void);
 void test_sll_split(void);
+void test_sll_alternate_split(void);
 void test_sll_reverse_rec(void);
 
 struct node* make_sll(unsigned int n)
@@ -103,7 +104,7 @@ void test_sll_split(void)
 	sll_delete_rec(a);
 	sll_delete_rec(b);
 
-	printf("add four nodes and split:-\n");
+	printf("add five nodes and split:-\n");
 	sl = make_sll(5);
 	sll_print(sl);
 	sll_split(&sl, &a, &b);
@@ -114,6 +115,82 @@ void test_sll_split(void)
 	sll_delete_rec(a);
 	sll_delete_rec(b);
 	
+}
+
+void test_sll_alternate_split(void)
+{
+	struct node *sl = NULL;
+	struct node *a = NULL;
+	struct node *b = NULL;
+
+	printf("Split empty list:- \n");
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+
+	printf("add one node and split:-\n");
+    sl = make_sll(1);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+	printf("add two nodes and split:-\n");
+	sl = make_sll(2);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+
+	printf("add three nodes and split:-\n");
+	sl = make_sll(3);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+
+	printf("add four nodes and split:-\n");
+	sl = make_sll(4);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+
+	printf("add five nodes and split:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
+
+	printf("add six nodes and split:-\n");
+	sl = make_sll(6);
+	sll_print(sl);
+	sll_alternate_split(&sl, &a, &b);
+	sll_print(sl);
+	sll_print(a);
+	sll_print(b);
+	sll_delete_rec(sl);
+	sll_delete_rec(a);
+	sll_delete_rec(b);
 }
 
 void test_sll_reverse_rec(void)
@@ -134,7 +211,8 @@ int main(int argc, char *argv[])
 
 	/*test_sll_delete_data();*/
 	/*test_sll_split();*/
-	test_sll_reverse_rec();
+	test_sll_alternate_split();
+	/*test_sll_reverse_rec();*/
 #if 0
 	int i;
 	struct node *sl = NULL;

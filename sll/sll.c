@@ -176,11 +176,45 @@ void sll_split(struct node **sl, struct node **a, struct node **b)
 	for (l = *sl, h = l->next; h->next && h->next->next;
 									l = h, h = h->next->next)
 		;
-	*a = *sl; 
+	*a = *sl;
 	*b = l->next;
 	l->next = NULL;
 	*sl = NULL;
 }
+
+void sll_alternate_split(struct node **sl, struct node **a, struct node **b)
+{
+	struct node *l;
+	struct node *h;
+
+	if (*sl == NULL)
+		return;
+
+	if ((*sl)->next == NULL) {
+		*a = *sl;
+		*b = NULL;
+		*sl = NULL;
+		return;
+	}
+
+	*a = *sl;
+	*b = (*sl)->next;
+
+	for (l = *a, h = *b; h && h->next;) {
+		l->next = h->next;
+		l = l->next;
+
+		if (h->next) {
+			h->next = h->next->next;
+			h = h->next;
+		}
+	}
+
+    if (l->next)
+		l->next = NULL;
+	*sl = NULL;
+}
+
 
 struct node* __sll_reverse_rec(struct node *sl, struct node *p)
 {
@@ -193,7 +227,7 @@ struct node* __sll_reverse_rec(struct node *sl, struct node *p)
 		nsl = sl;
 
 	sl->next = p;
-	
+
 	return nsl;
 }
 
