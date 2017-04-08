@@ -7,6 +7,7 @@ void test_sll_delete_data(void);
 void test_sll_split(void);
 void test_sll_alternate_split(void);
 void test_sll_reverse_rec(void);
+void test_sll_find_middle(void);
 
 struct node* make_sll(unsigned int n)
 {
@@ -114,7 +115,6 @@ void test_sll_split(void)
 	sll_delete_rec(sl);
 	sll_delete_rec(a);
 	sll_delete_rec(b);
-	
 }
 
 void test_sll_alternate_split(void)
@@ -205,13 +205,55 @@ void test_sll_reverse_rec(void)
 	sll_delete_rec(sl);
 }
 
+void test_sll_find_middle(void)
+{
+	struct node *sl = NULL;
+
+	printf("find_middle empty list:- \n");
+	sll_find_middle(&sl);
+	sll_print(sl);
+
+	printf("add one node and find_middle:-\n");
+    sl = make_sll(1);
+	sll_print(sl);
+	sll_find_middle(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+	printf("add two nodes and find_middle:-\n");
+	sl = make_sll(2);
+	sll_print(sl);
+	sll_find_middle(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+	printf("add three nodes and find_middle:-\n");
+	sl = make_sll(3);
+	sll_print(sl);
+	sll_find_middle(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+	printf("add four nodes and find_middle:-\n");
+	sl = make_sll(4);
+	sll_print(sl);
+	sll_find_middle(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+
+	printf("add five nodes and find_middle:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_find_middle(&sl);
+	sll_print(sl);
+	sll_delete_rec(sl);
+}
+
 int main(int argc, char *argv[])
 {
 
 
 	/*test_sll_delete_data();*/
 	/*test_sll_split();*/
-	test_sll_alternate_split();
+	/*test_sll_alternate_split();*/
+	test_sll_find_middle();
 	/*test_sll_reverse_rec();*/
 #if 0
 	int i;

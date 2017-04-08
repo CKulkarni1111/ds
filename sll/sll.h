@@ -20,6 +20,8 @@ void sll_delete_nth(struct node **sl, int pos);
 void sll_delete_data(struct node **sl, int data);
 void sll_split(struct node **sl, struct node **a, struct node **b);
 void sll_alternate_split(struct node **sl, struct node **a, struct node **b);
+void sll_move_end(struct node **sl, int data);
+void sll_find_middle(struct node **sl);
 struct node* __sll_reverse_rec(struct node *sl, struct node *p);
 void sll_reverse_rec(struct node **sl);
 int  sll_count(struct node *sl);

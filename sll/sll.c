@@ -215,6 +215,37 @@ void sll_alternate_split(struct node **sl, struct node **a, struct node **b)
 	*sl = NULL;
 }
 
+/* move all occurences of the data to the end */
+void sll_move_end(struct node **sl, int data)
+{
+
+
+
+}
+
+void sll_find_middle(struct node **sl)
+{
+	struct node *l;
+	struct node *h;
+
+    if (*sl == NULL)
+		return;
+
+	l = *sl;
+	h = l->next;
+	while (h && h->next) {
+		l = l->next;
+        h = h->next->next;
+	}
+
+	printf("%d ", l->data);
+
+	if (h)
+		printf("%d", h->data);
+
+	putchar('\n');
+}
+
 
 struct node* __sll_reverse_rec(struct node *sl, struct node *p)
 {
