@@ -246,6 +246,20 @@ void sll_find_middle(struct node **sl)
 	putchar('\n');
 }
 
+int sll_find_nth_from_end(struct node *sl, int n)
+{
+	int cnt;
+
+	if (sl == NULL)
+		return  n;
+
+	cnt = sll_find_nth_from_end(sl->next, n);
+
+	if (cnt == 0)
+		printf("%d from the end %d\n", n, sl->data);
+
+	return cnt - 1;
+}
 
 struct node* __sll_reverse_rec(struct node *sl, struct node *p)
 {

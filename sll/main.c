@@ -8,6 +8,7 @@ void test_sll_split(void);
 void test_sll_alternate_split(void);
 void test_sll_reverse_rec(void);
 void test_sll_find_middle(void);
+void test_sll_find_nth_from_end(void);
 
 struct node* make_sll(unsigned int n)
 {
@@ -246,6 +247,23 @@ void test_sll_find_middle(void)
 	sll_delete_rec(sl);
 }
 
+void test_sll_find_nth_from_end(void)
+{
+	struct node *sl = NULL;
+
+	printf("test find nth from end:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_find_nth_from_end(sl, 0);
+	sll_find_nth_from_end(sl, 1);
+	sll_find_nth_from_end(sl, 2);
+	sll_find_nth_from_end(sl, 3);
+	sll_find_nth_from_end(sl, 4);
+	sll_find_nth_from_end(sl, 5);
+	sll_print(sl);
+	sll_delete_rec(sl);
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -253,8 +271,9 @@ int main(int argc, char *argv[])
 	/*test_sll_delete_data();*/
 	/*test_sll_split();*/
 	/*test_sll_alternate_split();*/
-	test_sll_find_middle();
-	/*test_sll_reverse_rec();*/
+	/*test_sll_find_middle();*/
+	test_sll_find_nth_from_end();
+	 /*test_sll_reverse_rec();*/
 #if 0
 	int i;
 	struct node *sl = NULL;
