@@ -246,6 +246,27 @@ void sll_find_middle(struct node **sl)
 	putchar('\n');
 }
 
+void sll_find_loop(struct node *sl)
+{
+	struct node *l;
+	struct node *h;
+
+    if (sl == NULL)
+		return;
+
+	l = sl;
+	h = l->next;
+	while (h && h->next) {
+		if (l == h) {
+			printf("Loop Detected\n");
+			break;
+		}
+
+		l = l->next;
+        h = h->next->next;
+	}
+}
+
 int sll_find_nth_from_end(struct node *sl, int n)
 {
 	int cnt;
