@@ -223,6 +223,29 @@ void sll_move_end(struct node **sl, int data)
 
 }
 
+/* detect the loop in the linked list */
+void sll_find_loop(struct node *sl)
+{
+	struct node *l;
+	struct node *h;
+
+    if (sl == NULL)
+		return;
+
+	l = sl;
+	h = l->next;
+	while (h && h->next) {
+		if (l == h) {
+			printf("Loop Detected\n");
+			break;
+		}
+
+		l = l->next;
+        h = h->next->next;
+	}
+}
+
+/* find thye middle of the linked list */
 void sll_find_middle(struct node **sl)
 {
 	struct node *l;
@@ -246,27 +269,7 @@ void sll_find_middle(struct node **sl)
 	putchar('\n');
 }
 
-void sll_find_loop(struct node *sl)
-{
-	struct node *l;
-	struct node *h;
-
-    if (sl == NULL)
-		return;
-
-	l = sl;
-	h = l->next;
-	while (h && h->next) {
-		if (l == h) {
-			printf("Loop Detected\n");
-			break;
-		}
-
-		l = l->next;
-        h = h->next->next;
-	}
-}
-
+/* find and pring nth node from the end of the linked list */
 int sll_find_nth_from_end(struct node *sl, int n)
 {
 	int cnt;
@@ -282,6 +285,7 @@ int sll_find_nth_from_end(struct node *sl, int n)
 	return cnt - 1;
 }
 
+/* reverse linked list recursively */
 struct node* __sll_reverse_rec(struct node *sl, struct node *p)
 {
 	struct node *nsl = NULL;
@@ -368,4 +372,20 @@ void sll_print(struct node *sl)
 		sl = sl->next;
 	}
 	puts(" NULL");
+}
+
+void sll_print_alternate(struct node *sl)
+{
+	if (sl == NULL)
+		return;
+
+	while (sl && sl->next) {
+		printf("%d ", sl->data);
+		sl = sl->next->next;
+	}
+
+	if (sl)
+		printf("%d \n", sl->data);
+
+	putchar('\n');
 }
