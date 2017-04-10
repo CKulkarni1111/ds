@@ -29,4 +29,5 @@ void sll_reverse_rec(struct node **sl);
 int  sll_count(struct node *sl);
 void sll_print(struct node *sl);
 void sll_print_alternate(struct node *sl);
+void sll_print_alternate_mirror(struct node *sl);
 #endif /* __SLL__ */

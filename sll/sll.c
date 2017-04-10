@@ -374,6 +374,7 @@ void sll_print(struct node *sl)
 	puts(" NULL");
 }
 
+/* print alternate node of the linked list */
 void sll_print_alternate(struct node *sl)
 {
 	if (sl == NULL)
@@ -388,4 +389,16 @@ void sll_print_alternate(struct node *sl)
 		printf("%d \n", sl->data);
 
 	putchar('\n');
+}
+
+/* print alternate_mirror of the linked list */
+void sll_print_alternate_mirror(struct node *sl)
+{
+	if (sl == NULL)
+		return;
+
+    printf("%d ", sl->data);
+	if (sl->next)
+		sll_print_alternate_mirror(sl->next->next);
+    printf("%d ", sl->data);
 }

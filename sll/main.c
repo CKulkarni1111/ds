@@ -11,6 +11,7 @@ void test_sll_find_middle(void);
 void test_sll_find_loop(void);
 void test_sll_find_nth_from_end(void);
 void test_sll_print_alternate(void);
+void test_sll_print_alternate_mirror(void);
 
 struct node* make_sll(unsigned int n)
 {
@@ -370,6 +371,49 @@ void test_sll_print_alternate(void)
 	sll_delete_rec(sl);
 }
 
+void test_sll_print_alternate_mirror(void)
+{
+	struct node *sl = NULL;
+
+	printf("print_alternate_mirror empty list:- \n");
+	sll_print_alternate_mirror(sl);
+	sll_print(sl);
+
+	printf("add one node and print_alternate_mirror:-\n");
+    sl = make_sll(1);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+	printf("add two nodes and print_alternate_mirror:-\n");
+	sl = make_sll(2);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+	printf("add three nodes and print_alternate_mirror:-\n");
+	sl = make_sll(3);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+	printf("add four nodes and print_alternate_mirror:-\n");
+	sl = make_sll(4);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+
+	printf("add five nodes and print_alternate_mirror:-\n");
+	sl = make_sll(5);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+	
+	printf("add five nodes and print_alternate_mirror:-\n");
+	sl = make_sll(10);
+	sll_print(sl);
+	sll_print_alternate_mirror(sl);
+	sll_delete_rec(sl);
+}
+
+
 int main(int argc, char *argv[])
 {
 
@@ -379,7 +423,7 @@ int main(int argc, char *argv[])
 	/*test_sll_alternate_split();*/
 	/*test_sll_find_middle();*/
 	/*test_sll_find_loop();*/
-	test_sll_print_alternate();
+	test_sll_print_alternate_mirror();
 	/*test_sll_find_nth_from_end();*/
 	 /*test_sll_reverse_rec();*/
 #if 0
