@@ -134,24 +134,53 @@ void sll_delete_data(struct node **sl, int data)
 
 	if (*sl == NULL)
 		return;
-	else {
-		while (*sl && (*sl)->data == data) {
-			t = *sl;
-			*sl = (*sl)->next;
-			free(t);
-		}
-		if (*sl) {
-			for (l = *sl, h = l->next; h; l = h, h = h->next) {
-				while (h && h->data == data) {
-					t = h;
-					h = h->next;
-					free(t);
-				}
-				l->next = h;
-				if (!h)
-					return;
+
+	while (*sl && (*sl)->data == data) {
+		t = *sl;
+		*sl = (*sl)->next;
+		free(t);
+	}
+	if (*sl) {
+		for (l = *sl, h = l->next; h; l = h, h = h->next) {
+			while (h && h->data == data) {
+				t = h;
+				h = h->next;
+				free(t);
 			}
+			l->next = h;
+			if (!h)
+				return;
 		}
+	}
+}
+
+void sll_delete_node(struct node **sl, struct node *d)
+{
+	struct node *t;
+
+	if (*sl == NULL)
+		return;
+
+	if ((*sl)->next == NULL) {
+		if (*sl == d) {
+			free(*sl);
+			*sl = NULL;
+			return;
+		}
+	}
+
+	if (*sl == d) {
+		*sl = (*sl)->next;
+		free(d);
+		return;
+	}
+
+	for (t = *sl; t && t->next != d; t = t->next)
+		;
+
+	if (t && t->next && t->next == d) {
+		t->next = d->next;
+		free(d);
 	}
 }
 

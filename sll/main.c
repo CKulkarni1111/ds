@@ -13,6 +13,7 @@ void test_sll_find_nth_from_end(void);
 void test_sll_print_alternate(void);
 void test_sll_print_alternate_mirror(void);
 void test_sll_delete_duplicates(void);
+void test_sll_delete_node(void);
 
 struct node* make_sll(unsigned int n)
 {
@@ -364,7 +365,7 @@ void test_sll_print_alternate(void)
 	sll_print(sl);
 	sll_print_alternate(sl);
 	sll_delete_rec(sl);
-	
+
 	printf("add five nodes and print_alternate:-\n");
 	sl = make_sll(10);
 	sll_print(sl);
@@ -479,6 +480,41 @@ void test_sll_delete_duplicates(void)
 
 }
 
+void test_sll_delete_node(void)
+{
+	int i;
+	struct node *sl = NULL;
+	struct node *t = NULL;
+
+	for (i = 0; i < 10; i++)
+		sll_append(&sl, i);
+
+	sll_print(sl);
+	sll_delete_node(&sl, sl->next->next);
+	sll_print(sl);
+	sll_delete_node(&sl, sl);
+	sll_print(sl);
+
+	for (i = 0, t = sl; t && i < 5; i++, t = t->next)
+		;
+
+	sll_delete_node(&sl, t);
+	sll_print(sl);
+
+	for (i = 0, t = sl; t && i < 4; i++, t = t->next)
+		;
+
+	sll_delete_node(&sl, t);
+	sll_print(sl);
+    for (i = 0; i < 6; i++) {
+		sll_delete_node(&sl, sl);
+		sll_print(sl);
+    }
+
+	sll_delete_rec(sl);
+	sl = NULL;
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -489,9 +525,10 @@ int main(int argc, char *argv[])
 	/*test_sll_find_middle();*/
 	/*test_sll_find_loop();*/
 	/*test_sll_print_alternate_mirror();*/
-	test_sll_delete_duplicates();
+	/*test_sll_delete_duplicates();*/
 	/*test_sll_find_nth_from_end();*/
 	 /*test_sll_reverse_rec();*/
+	 test_sll_delete_node();
 #if 0
 	int i;
 	struct node *sl = NULL;
