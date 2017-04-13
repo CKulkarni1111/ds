@@ -12,12 +12,13 @@ struct node {
 
 void sll_append(struct node **sl, int data);
 void sll_delete(struct node **sl);
-void sll_delete_rec(struct node *sl);
 void sll_append_list(struct node **a, struct node **b);
 void sll_insert_nth(struct node **sl, int pos, int data);
 void sll_sorted_insert(struct node **sl, int data);
+void sll_delete_rec(struct node *sl);
 void sll_delete_nth(struct node **sl, int pos);
 void sll_delete_data(struct node **sl, int data);
+void sll_delete_duplicates(struct node **sl);
 void sll_split(struct node **sl, struct node **a, struct node **b);
 void sll_alternate_split(struct node **sl, struct node **a, struct node **b);
 void sll_move_end(struct node **sl, int data);

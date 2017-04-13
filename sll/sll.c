@@ -329,6 +329,28 @@ void sll_delete_rec(struct node *sl)
 	free(sl);
 }
 
+/* removes duplicates from unsorted array */
+void sll_delete_duplicates(struct node **sl)
+{
+	struct node *i;
+	struct node *j;
+	struct node *d;
+
+	if (*sl == NULL || (*sl)->next == NULL)
+		return;
+
+	for (i = *sl; i; i = i->next) {
+		for (j = i; j->next;) {
+			if (i->data == j->next->data) {
+				d = j->next;
+				j->next = j->next->next;
+				free(d);
+			} else
+				j = j->next;
+		}
+	}
+}
+
 /* append list b at the end of list a */
 void sll_append_list(struct node **a, struct node **b)
 {
