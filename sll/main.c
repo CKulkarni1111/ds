@@ -9,6 +9,7 @@ void test_sll_alternate_split(void);
 void test_sll_reverse_rec(void);
 void test_sll_find_middle(void);
 void test_sll_find_loop(void);
+void test_sll_rotate(void);
 void test_sll_find_nth_from_end(void);
 void test_sll_print_alternate(void);
 void test_sll_print_alternate_mirror(void);
@@ -312,7 +313,44 @@ void test_sll_find_loop(void)
 	sll_find_loop(sl);
 }
 
+void test_sll_rotate(void)
+{
+	struct node *sl = NULL;
 
+	sll_rotate(&sl, 0);
+	sll_print(sl);
+
+	sll_append(&sl, 1);
+	sll_print(sl);
+	sll_rotate(&sl, 2);
+	sll_print(sl);
+
+	sll_append(&sl, 2);
+	sll_print(sl);
+	sll_rotate(&sl, 1);
+	sll_print(sl);
+	sll_rotate(&sl, 1);
+	sll_print(sl);
+
+	sll_append(&sl, 3);
+	sll_print(sl);
+	sll_rotate(&sl, 4);
+	sll_print(sl);
+
+	sll_append(&sl, 4);
+	sll_print(sl);
+	sll_rotate(&sl, 1);
+	sll_print(sl);
+
+	sll_rotate(&sl, 2);
+	sll_print(sl);
+
+	sll_rotate(&sl, 3);
+	sll_print(sl);
+
+	sll_rotate(&sl, 4);
+	sll_print(sl);
+}
 
 void test_sll_find_nth_from_end(void)
 {
@@ -528,7 +566,8 @@ int main(int argc, char *argv[])
 	/*test_sll_delete_duplicates();*/
 	/*test_sll_find_nth_from_end();*/
 	 /*test_sll_reverse_rec();*/
-	 test_sll_delete_node();
+	/* test_sll_delete_node();*/
+	test_sll_rotate();
 #if 0
 	int i;
 	struct node *sl = NULL;

@@ -252,6 +252,41 @@ void sll_move_end(struct node **sl, int data)
 
 }
 
+/* left rotate sll without having length  */
+void sll_rotate(struct node **sl, int pos)
+{
+	int i;
+	struct node *s;
+	struct node *t;
+
+	if (pos == 0 || *sl == NULL)
+		return;
+
+	s = *sl;
+	for (i = 0, t = *sl; t && (i < pos - 1); i++, t = t->next)
+		;
+
+	if (t == NULL) {
+		fprintf(stderr, "ERROR : pos %d out of bounds\n", pos);
+		return;
+	}
+
+	if (t->next == NULL)
+		return;
+
+	*sl = t->next;
+	t->next = NULL;
+
+	if (*sl == NULL)
+		printf("HAHAHHAAHHAHA\n");
+
+	for (t = *sl; t->next; t = t->next)
+		;
+
+	t->next = s;
+}
+
+
 /* detect the loop in the linked list */
 void sll_find_loop(struct node *sl)
 {

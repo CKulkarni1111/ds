@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wmissing-prototypes
+CFLAGS = -Wall -Werror -Wmissing-prototypes -g
 OBJS = main.o sll.o
 PROG = sll
 

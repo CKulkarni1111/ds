@@ -23,6 +23,7 @@ void sll_delete_node(struct node **sl, struct node *d);
 void sll_split(struct node **sl, struct node **a, struct node **b);
 void sll_alternate_split(struct node **sl, struct node **a, struct node **b);
 void sll_move_end(struct node **sl, int data);
+void sll_rotate(struct node **sl, int pos);
 void sll_find_loop(struct node *sl);
 void sll_find_middle(struct node **sl);
 int sll_find_nth_from_end(struct node *sl, int n);
