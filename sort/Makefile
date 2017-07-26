@@ -1,14 +1,14 @@
-CC = gcc
-CFLAGS = -Wall -Werror -Wmissing-prototypes
-OBJS = insertion_sort.o
-PROG = insertion_sort
+SRCS = $(wildcard *.c)
 
-all: $(PROG)
+PROGS = $(patsubst %.c,%,$(SRCS))
 
-$(PROG): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+CFLAGS = -Wall -Werror
 
-insertion_sort.o: insertion_sort.c
+all: $(PROGS)
 
-clean:
-	rm -f *~ *.o $(PROG) core a.out
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $<
+clean: 
+	rm -f $(PROGS)
+
+
